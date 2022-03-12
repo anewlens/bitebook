@@ -1,0 +1,141 @@
+.App {
+  background-color: var(--orange-1);
+  --navColor: var(--orange-3);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: calc(var(--lateralMargins) - 2.4rem) repeat(5, 1fr) calc(var(--lateralMargins) - 2.4rem);
+  grid-template-rows: 1fr 4fr 1fr;
+  max-height: 90vh;
+  gap: 2.4rem;
+  margin-bottom: calc(10vh + 8.4rem);
+
+  background-color: var(--orange-3);
+  color: white;
+
+  &_content {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    align-self: center;
+
+  }
+
+  &_tagLine {
+    font-size: 9.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--orange-1);
+  }
+
+  &_descript {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: 2.4rem 0;
+    max-width: 26em;
+    padding-right: 3rem;
+    color: var(--orange-1);
+  }
+
+  &_image {
+    grid-column: 4/8;
+    grid-row: 1/5;
+    overflow-x: clip;
+    margin-bottom: -10vh;
+    box-shadow: -2rem 2rem 0px 0px var(--blue-2);
+    animation-name: slideUp;
+    animation-duration: .75s;
+    animation-timing-function: ease-out;
+
+    img {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &_links {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+
+    &>a[href="/login"] {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: white;
+    }
+  }
+
+  &_jump {
+    grid-column: 2/4;
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: -6rem;
+    margin-top: 3rem;
+
+    &:hover .hero_jumpLink_symbol {
+      animation: bounceDown .15s forwards;
+    }
+  }
+
+  &_jumpLink {
+    color: white;
+    font-size: 1.8rem;
+    align-self: center;
+    position: relative;
+
+    &_symbol {
+      font-size: 3.6rem;
+      transform: rotate(-90deg);
+      color: var(--orange-1);
+    }
+  }
+}
+
+.explore {
+  padding: 0 var(--lateralMargins);
+
+
+  &_heading {
+    font-size: 9.6rem;
+    font-weight: 800;
+    color: var(--orange-4);
+  }
+
+  &_subheading {
+    font-size: 3.6rem;
+    font-weight: 300;
+    color: var(--orange-3);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+    box-shadow: 0rem 0rem 0px 0px var(--blue-1);
+  }
+
+  50% {
+    transform: translateY(0);
+    box-shadow: 0rem 0rem 0px 0px var(--blue-1);
+  }
+
+  100% {
+    transform: translateY(0);
+    box-shadow: -1.2rem 1.2rem 0px 0px var(--blue-1);
+  }
+}
+
+@keyframes bounceDown {
+  0% {
+    transform: translateY(0) rotate(-90deg);
+  }
+
+  100% {
+    transform: translateY(1rem) rotate(-90deg);
+  }
+}

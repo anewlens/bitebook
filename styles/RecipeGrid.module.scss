@@ -1,0 +1,9 @@
+.recipeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, auto));
+    grid-auto-rows: 400px;
+    column-gap: 4.5%;
+    row-gap: 7.6rem;
+    align-items: stretch;
+    padding: 7.6rem 0;
+}

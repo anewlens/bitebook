@@ -1,0 +1,103 @@
+.recipeCard {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    background-color: var(--orange-1);
+    cursor: pointer;
+    transition: all .2s ease-out;
+
+    &:hover .recipeCard_title {
+        color: var(--textColor);
+    }
+
+    &:hover::before {
+        top: -2rem;
+        left: -2rem
+    }
+
+    &:hover::after {
+        bottom: -2rem;
+        right: -2rem
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -1.2rem;
+        left: -1.2rem;
+        width: 50%;
+        height: 25%;
+        background-color: var(--accentColor);
+        z-index: -1;
+        transition: all .15s ease-out;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.2rem;
+        right: -1.2rem;
+        width: 50%;
+        height: 25%;
+        background-color: var(--accentColor);
+        z-index: -1;
+        transition: all .15s ease-out;
+    }
+
+
+    &>span {
+        flex: 2;
+    }
+
+    & img {
+        object-fit: cover;
+    }
+
+    &_content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--orange-1);
+        padding: 1.6rem 0;
+    }
+
+    &_row1 {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.8rem;
+        color: var(--textColor);
+        padding-right: 1.6rem;
+    }
+
+    &_title {
+        flex: 1;
+        font-size: 2.4rem;
+        color: var(--orange-4);
+        padding-top: 1.2rem;
+        font-weight: 500;
+        transition: all .2s ease-out;
+    }
+
+    &_row3 {
+        display: flex;
+        color: var(--textColor);
+        font-size: 1.8rem;
+        justify-self: end;
+    }
+}
+
+.Main {
+    --accentColor: var(--green-2);
+    --textColor: var(--green-3);
+}
+
+.Breakfast {
+    --accentColor: var(--orange-2);
+    --textColor: var(--orange-3);
+}
+
+.Dessert {
+    --accentColor: var(--blue-2);
+    --textColor: var(--blue-3);
+}
