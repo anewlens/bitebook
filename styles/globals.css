@@ -22,12 +22,26 @@
   --red-3: hsl(0, 34%, 37%);
   --red-4: hsl(0, 98%, 16%);
 
+  --yellow-1: hsl(50, 100%, 93%);
+  --yellow-2: hsl(50, 100%, 80%);
+  --yellow-3: hsl(50, 100%, 33%);
+  --yellow-4: hsl(50, 98%, 16%);
+
+  --purple-1: hsl(274, 100%, 93%);
+  --purple-2: hsl(274, 60%, 80%);
+  --purple-3: hsl(274, 50%, 38%);
+  --purple-4: hsl(274, 98%, 16%);
+
   --lateralMargins: 7vw;
 
   font-size: 10px;
   scroll-behavior: smooth;
 }
 
+
+html {
+  background-color: var(--orange-1);
+}
 
 
 *,
@@ -53,4 +67,11 @@ button {
   /* border-radius: .8rem; */
   font-weight: 600;
   cursor: pointer;
+}
+
+@media screen and (min-width: 1500px) {
+
+  :root {
+    --lateralMargins: 15vw;
+  }
 }

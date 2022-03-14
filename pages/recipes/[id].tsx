@@ -5,7 +5,11 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import recipes from '../../data/recipes.js'
 import styles from '../../styles/Recipe.module.scss'
-import Fork from '../../Components/UI/Fork';
+import colors from '../../styles/Colors.module.scss'
+import Fork from '../../Components/UI/SVGs/Fork';
+import Group from '../../Components/UI/SVGs/Group'
+import Clock from '../../Components/UI/SVGs/Clock';
+import Star from '../../Components/UI/SVGs/Star';
 
 type Props = {
     recipe: {
@@ -22,7 +26,7 @@ type Props = {
         };
         ratings: {
             rating: number;
-            number: number;
+            amount: number;
         };
         forks: number;
         ingredients: [{ amount: number | null; unit: string | null; item: string; method: string | null; section: string | null; }];
@@ -31,7 +35,11 @@ type Props = {
     errors: string
 }
 
-const Recipe = ({ recipe: { img, title, category, date, user, description, servings, time, ratings, forks, ingredients, steps }, errors }: Props) => {
+const Recipe = ({ recipe: { img, title, category, date, user, description, servings, time, ratings, forks, ingredients, steps } }: Props) => {
+
+    const [flexIngrs, setIngredients] = useState(ingredients)
+    const [servesInput, setServesInput] = useState(1)
+
 
     const findCategories = (array: [any]) => {
         let arr: any = []
@@ -53,7 +61,8 @@ const Recipe = ({ recipe: { img, title, category, date, user, description, servi
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className={`${styles.recipe} ${styles[category]}`}>
+            <main className={`${styles.recipe} ${colors[category]}`}>
+
                 <header className={styles.header}>
                     <div className={styles.header_content}>
                         <div className={styles.header_row1}>
@@ -63,17 +72,32 @@ const Recipe = ({ recipe: { img, title, category, date, user, description, servi
                         <h2 className={styles.header_title}>{title}</h2>
                         <p className={styles.header_user}>@{user}</p>
                         <p className={styles.header_description}>{description}</p>
+
                         <div className={styles.header_stats}>
+
                             <div className={styles.header_stats_row}>
-                                <span className={styles.header_servings}><strong>Serves:</strong> {servings}</span>
-                                <span className={styles.header_ratings}>&#9734;  {ratings.rating} ({ratings.number})</span>
-                            </div>
-                            <div className={styles.header_stats_row}>
-                                <div className={styles.header_time}>
-                                    <span><strong>Active Time:</strong> {time.active}</span>
-                                    <span><strong>Total Time:</strong> {time.total}</span>
+                                <div className={`${styles.header_stat} ${styles.header_stat_servings}`}>
+                                    <Group />
+                                    <span className={styles.header_serving}>
+                                        <strong>Serves:</strong> {servings}
+                                    </span>
                                 </div>
-                                <span className={styles.header_forks}><Fork />{forks}</span>
+                                <div className={`${styles.header_stat} ${styles.header_stat_ratings}`}>
+                                    <Star /> <span> {ratings.rating} ({ratings.amount})</span>
+                                </div>
+                            </div>
+
+                            <div className={styles.header_stats_row}>
+                                <div className={`${styles.header_stat} ${styles.header_stat_time}`}>
+                                    <Clock />
+                                    <div className={styles.header_time}>
+                                        <span><strong>Active Time:</strong> {time.active}</span>
+                                        <span><strong>Total Time:</strong> {time.total}</span>
+                                    </div>
+                                </div>
+                                <div className={`${styles.header_stat} ${styles.header_stat_forks}`}>
+                                    <Fork /><span className={styles.header_forks}>{forks}</span>
+                                </div>
                             </div>
                         </div>
 
@@ -81,6 +105,7 @@ const Recipe = ({ recipe: { img, title, category, date, user, description, servi
                             <button>Fork</button><button>Save</button>
                         </div>
                     </div>
+
                     <div className={styles.header_img}>
                         <Image src={img} alt="Pasta" className={styles.header_img}
                             width={1000}
@@ -91,32 +116,47 @@ const Recipe = ({ recipe: { img, title, category, date, user, description, servi
                 </header>
 
                 <section className={styles.section}>
-                    <h3 className={styles.recipe_h2}>Ingredients</h3>
-                    <div className={styles.section_cats}>
-                        {
-                            findCategories(ingredients).map((cat: string) => {
+                    <header className={styles.section_header}>
+                        <h3 className={styles.recipe_h2}>Ingredients</h3>
+                        <div className={styles.recipe_servingControls}>
+                            <Group />
+                            <span>X</span>
+                            <input type="number" pattern="[1-9]*" min={1} step={.5} value={`${servesInput}`} placeholder="x" onChange={(e) => { console.log(e); setServesInput(Number(e.target.value)); }} />
+                        </div>
+                    </header>
 
-                                return (
-                                    <div className={styles.section_category}>
-                                        <h4 className={styles.recipe_h3}> {cat}</h4>
-                                        {
-                                            ingredients.filter((item: any) => item.section == cat)
-                                                .map((item) => {
-                                                    console.log(item)
-                                                    return (<p className={styles.section_item}><strong>{item.amount} {item.unit}</strong> {item.item}{item.method && ','} {item.method}</p>)
-                                                })
-                                        }
-                                    </div>
-                                )
-                            })
-                        }
+                    {
+                        flexIngrs.find(item => item.section) ?
+                            (
+                                <div className={styles.section_cats}>
+                                    {
+                                        findCategories(flexIngrs).map((cat: string) => {
 
-                        {
-                            ingredients.filter(item => !item.section).map((item) => {
-                                return (<p className={styles.section_item}><strong>{item.amount} {item.unit}</strong> {item.item}{item.method && ','} {item.method}</p>)
-                            })
-                        }
-                    </div>
+                                            return (
+                                                <div className={styles.section_category}>
+                                                    <h4 className={styles.recipe_h3}> {cat}</h4>
+                                                    {
+                                                        flexIngrs.filter((item: any) => item.section == cat)
+                                                            .map((item) => {
+                                                                console.log(item)
+                                                                return (<p className={styles.section_item}><strong>{item.amount && item.amount * servesInput} {item.unit}</strong> {item.item}{item.method && ','} {item.method}</p>)
+                                                            })
+                                                    }
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            ) :
+                            <div className={styles.section_category}>
+                                {
+                                    flexIngrs.map((item) => {
+                                        return (<p className={styles.section_item}><strong>{item.amount && item.amount * servesInput} {item.unit}</strong> {item.item}{item.method && ','} {item.method}</p>)
+                                    })
+                                }
+                            </div>
+                    }
+
                 </section>
 
                 <section className={`${styles.section} ${styles.steps}`}>

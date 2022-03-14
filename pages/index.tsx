@@ -4,6 +4,7 @@ import Button from '../Components/Common/Button'
 import RecipeCard from '../Components/UI/RecipeCard'
 import RecipeGrid from '../Components/UI/RecipeGrid'
 import styles from '../styles/Home.module.scss'
+import recipes from '../data/recipes'
 
 const Home: NextPage = () => {
   return (
@@ -34,10 +35,13 @@ const Home: NextPage = () => {
             <img src="https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1040&q=80" alt="cooking" />
           </div>
 
-          <a href="#explore" className={styles.hero_jump}>
-            <span className={styles.hero_jumpLink}>Explore Community Recipes</span>
-            <span className={styles.hero_jumpLink_symbol}>&#10094;</span>
-          </a>
+
+          <div className={styles.hero_jump}>
+            <a href="#explore" className={styles.hero_jump_link}>
+              <span className={styles.hero_jump_text}>Explore Community Recipes</span>
+              <span className={styles.hero_jump_symbol}>&#10094;</span>
+            </a>
+          </div>
 
         </div>
 
@@ -46,9 +50,12 @@ const Home: NextPage = () => {
           <p className={styles.explore_subheading}>See what the community's cooking</p>
 
           <RecipeGrid>
-            <RecipeCard category='Main' rating='3.3 (16)' title="Fresh Pasta with veggies" user="@anewlens26" />
-            <RecipeCard category='Dessert' rating='3.3 (16)' title="Fresh Pasta with veggies" user="@anewlens26" />
-            <RecipeCard category='Breakfast' rating='3.3 (16)' title="Fresh Pasta with veggies" user="@anewlens26" />
+            {
+              recipes
+                .map(({ id, category, title, img, user, ratings }) => (
+                  <RecipeCard key={id} id={id} category={category} img={img} ratings={ratings} title={title} user={user} />)
+                )
+            }
           </RecipeGrid>
 
         </section>

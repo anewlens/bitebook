@@ -16,12 +16,45 @@
         font-weight: 800;
     }
 
-    svg {
-        fill: var(--orange-4);
-        width: 3rem;
-        height: 3rem;
-        margin-bottom: -13%;
-        margin-right: 0.3rem;
+
+
+    &_servingControls {
+        display: flex;
+        align-items: center;
+
+        & svg {
+            width: 4.8rem;
+            height: 4.8rem;
+            margin-right: 1.6rem;
+            fill: var(--textColor);
+        }
+
+        & span {
+            font-size: 2rem;
+            color: var(--orange-4);
+            font-weight: 800;
+            margin-right: 1.6rem;
+        }
+
+        & input {
+            font-size: 2.4rem;
+            width: 3em;
+            background: transparent;
+            border: 1px solid var(--orange-4);
+            padding: .4rem 1rem;
+            font-weight: 800;
+
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        & input[type=number]::-webkit-inner-spin-button,
+        & input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
+
     }
 }
 
@@ -72,7 +105,7 @@
         font-size: 2rem;
         font-weight: 400;
         color: var(--orange-4);
-        margin: 2rem 0 2rem 0;
+        margin: 2rem 0 4rem 0;
     }
 
     &_stats {
@@ -80,7 +113,7 @@
         flex-direction: column;
         justify-content: space-between;
         padding-top: 2rem;
-        padding-bottom: 5.4rem;
+        padding-bottom: 3.6rem;
         border-bottom: 1px solid var(--orange-4);
         border-top: 1px solid var(--orange-4);
 
@@ -90,15 +123,38 @@
             align-items: center;
             font-size: 2rem;
         }
+
+        svg {
+            fill: var(--textColor);
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: -13%;
+            margin-right: 0.3rem;
+        }
     }
 
-    &_servings {
+    &_stat {
         margin-bottom: 2rem;
-    }
+        display: flex;
+        align-items: center;
 
-    &_ratings {
-        text-align: right;
-        margin-bottom: 2rem;
+        & svg {
+            margin: 0;
+            margin-right: 1.2rem;
+            fill: var(--textColor);
+            width: 3.6rem;
+            height: 3.6rem;
+        }
+
+        &_ratings svg {
+            width: 3.2rem;
+            height: 3.2rem;
+        }
+
+        &_forks svg {
+            margin-right: .8rem;
+        }
+
     }
 
     &_time {
@@ -128,7 +184,13 @@
 }
 
 .section {
-    margin-top: 5rem;
+    margin-top: 10rem;
+
+    &_header {
+        display: flex;
+        gap: 24.8rem;
+        align-items: flex-start;
+    }
 
     &_title {
         font-size: 3.6rem;
@@ -136,6 +198,8 @@
         text-transform: uppercase;
         margin-bottom: 5.6rem;
     }
+
+
 
     &_cats {
         display: flex;
@@ -187,11 +251,11 @@
     background-color: var(--orange-1);
     margin-top: -2.8rem;
     border: 1px solid var(--orange-4);
-    box-shadow: -0.8rem 0.8rem var(--green-2);
+    box-shadow: -0.8rem 0.8rem var(--accentColor);
     transition: all .2s ease-out;
 
     &:hover {
-        box-shadow: 0px 0px var(--green-2);
+        box-shadow: 0px 0px var(--accentColor);
     }
 
     &>button {
@@ -209,9 +273,4 @@
     &>button:last-child {
         padding: 1rem 3rem 1rem 1.6rem;
     }
-}
-
-.Mains {
-    --textColor: var(--green-3);
-    --accentColor: var(--green-2);
 }
