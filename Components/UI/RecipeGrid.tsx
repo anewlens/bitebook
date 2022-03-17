@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../styles/RecipeGrid.module.scss'
+import styles from '../../styles/Components/UI/RecipeGrid.module.scss'
 
 type GridProps = {
     children?: any

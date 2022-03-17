@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Button from '../Components/Common/Button'
 import RecipeCard from '../Components/UI/RecipeCard'
 import RecipeGrid from '../Components/UI/RecipeGrid'
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Pages/Home.module.scss'
 import recipes from '../data/recipes'
 
 const Home: NextPage = () => {
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             </p>
             <p className={styles.hero_descript}>Craft recipes that you love, share with friends, family and the world and explore what others have to offer. </p>
             <div className={styles.hero_links}>
-              <Button styling="Lg_blue">
+              <Button styling="clrBg_light" color='Blue'>
                 Create Account
               </Button>
               <a href="/login">Log in</a>

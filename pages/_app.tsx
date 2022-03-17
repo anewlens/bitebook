@@ -5,7 +5,7 @@ import {
   m
 } from "framer-motion"
 import Layout from '../Components/Layout/Layout'
-import '../styles/globals.css'
+import '../styles/Global/globals.css'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 

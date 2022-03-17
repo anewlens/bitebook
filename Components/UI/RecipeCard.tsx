@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image'
-import styles from '../../styles/RecipeCard.module.scss'
-import colors from '../../styles/Colors.module.scss'
+import styles from '../../styles/Components/UI/RecipeCard.module.scss'
+import colors from '../../styles/Global/Colors.module.scss'
 import Link from 'next/link'
 
 type RecipeData = {

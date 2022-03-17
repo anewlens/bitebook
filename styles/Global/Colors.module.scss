@@ -1,0 +1,47 @@
+.Mains,
+.Orange {
+    --lightColor: var(--orange-1);
+    --accentColor: var(--orange-2);
+    --textColor: var(--orange-3);
+    --darkColor: var(--orange-4)
+}
+
+.Breakfast,
+.Yellow {
+    --lightColor: var(--yellow-1);
+    --accentColor: var(--yellow-2);
+    --textColor: var(--yellow-3);
+    --darkColor: var(--yellow-4)
+}
+
+.Apps,
+.Blue {
+    --lightColor: var(--blue-1);
+    --accentColor: var(--blue-2);
+    --textColor: var(--blue-3);
+    --darkColor: var(--blue-4);
+}
+
+.Dessert,
+.Red {
+    --lightColor: var(--red-1);
+    --accentColor: var(--red-2);
+    --textColor: var(--red-3);
+    --darkColor: var(--red-4);
+}
+
+.Sidesgreen,
+.Green {
+    --lightColor: var(--green-1);
+    --accentColor: var(--green-2);
+    --textColor: var(--green-3);
+    --darkColor: var(--green-4)
+}
+
+.Drinks,
+.Purple {
+    --lightColor: var(--purple-1);
+    --accentColor: var(--purple-2);
+    --textColor: var(--purple-3);
+    --darkColor: var(--purple-4);
+}

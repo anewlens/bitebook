@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "data/recipes.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "data/recipes.js", "data/books.js"],
   "exclude": ["node_modules"]
 }

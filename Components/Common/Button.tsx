@@ -1,15 +1,18 @@
 import React from 'react';
-import styles from '../../styles/Button.module.scss'
+import styles from '../../styles/Components/Common/Button.module.scss'
+import Colors from '../../styles/Global/Colors.module.scss'
 
 type ButtonProps = {
     children: any;
     styling: string;
+    color?: string
+
 }
 
-const Button = ({ children, styling }: ButtonProps) => {
+const Button = ({ children, styling, color }: ButtonProps) => {
 
     return (
-        <button className={styles[styling]}>
+        <button className={`${styles[styling]} ${color && Colors[color]}`}>
             {children}
         </button>
     );

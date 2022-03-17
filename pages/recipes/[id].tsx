@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRouter } from 'next/router';
 import recipes from '../../data/recipes.js'
-import styles from '../../styles/Recipe.module.scss'
-import colors from '../../styles/Colors.module.scss'
+import styles from '../../styles/Pages/Recipe.module.scss'
+import colors from '../../styles/Global/Colors.module.scss'
 import Fork from '../../Components/UI/SVGs/Fork';
 import Group from '../../Components/UI/SVGs/Group'
 import Clock from '../../Components/UI/SVGs/Clock';
 import Star from '../../Components/UI/SVGs/Star';
+import { RecipeType, IngredientType, StepType } from '../../data/Props'
 
 type Props = {
-    recipe: {
-        img: string;
-        title: string;
-        category: string;
-        date: string;
-        user: string;
-        description: string;
-        servings: string;
-        time: {
-            active: string;
-            total: string;
-        };
-        ratings: {
-            rating: number;
-            amount: number;
-        };
-        forks: number;
-        ingredients: [{ amount: number | null; unit: string | null; item: string; method: string | null; section: string | null; }];
-        steps: [{ section: string | null; step: string; }]
-    };
+    recipe: RecipeType
     errors: string
 }
 
@@ -41,7 +22,7 @@ const Recipe = ({ recipe: { img, title, category, date, user, description, servi
     const [servesInput, setServesInput] = useState(1)
 
 
-    const findCategories = (array: [any]) => {
+    const findCategories = (array: IngredientType[] | StepType[]) => {
         let arr: any = []
 
         array.forEach((item: any) => {

@@ -1,0 +1,70 @@
+.bookCard {
+    width: 100%;
+    display: flex;
+    gap: 4rem;
+    border: 1px solid var(--orange-4);
+    max-height: 35rem;
+    min-height: min-content;
+
+    position: relative;
+
+    &_content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 2rem;
+
+
+        &_title {
+            font-size: 4.4rem;
+            font-weight: 800;
+            color: var(--textColor);
+            text-transform: uppercase;
+        }
+
+        &_recipes {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+
+
+            &_recipe {
+                font-size: 2rem;
+                font-weight: 600;
+                padding-bottom: 1rem;
+                transition: all .15s ease-out;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid var(--accentColor);
+                }
+
+                &:hover {
+                    color: var(--textColor);
+                }
+            }
+        }
+
+    }
+
+    &_imgContainer {
+        flex: 1;
+        margin: -1px -1px -4rem 0;
+        border: 1px solid var(--orange-4);
+        box-shadow: -1.2rem 1.2rem var(--accentColor);
+
+        & img,
+        & span {
+            display: inline-block;
+            height: 100% !important;
+            width: 100% !important;
+            object-fit: cover;
+        }
+    }
+
+    button {
+        position: absolute;
+        bottom: -2rem;
+        left: 2rem;
+    }
+}
