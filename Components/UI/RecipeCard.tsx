@@ -3,20 +3,13 @@ import Image from 'next/image'
 import styles from '../../styles/Components/UI/RecipeCard.module.scss'
 import colors from '../../styles/Global/Colors.module.scss'
 import Link from 'next/link'
+import { RecipeType } from '../../data/Props';
 
-type RecipeData = {
-    category: string;
-    ratings: {
-        rating: number;
-        amount: number
-    };
-    title: string;
-    user: string;
-    id: number;
-    img: string;
+type CardTypes = {
+    recipe: RecipeType
 }
 
-const RecipeCard = ({ id, category, ratings, title, user, img }: RecipeData) => {
+const RecipeCard = ({ recipe: { id, category, ratings, title, user, img } }: CardTypes) => {
 
     return (
         <Link

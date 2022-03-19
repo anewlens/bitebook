@@ -1,11 +1,11 @@
 input.input {
     background: none;
-    border: 1px solid var(--orange-4);
+    border: 1px solid var(--darkColor);
     padding: .4rem .8rem;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--orange-3);
-    box-shadow: -4px 4px var(--orange-2);
+    color: var(--textColor);
+    box-shadow: -4px 4px var(--accentColor);
     transition: all .15s ease-out;
 
 
@@ -14,7 +14,7 @@ input.input {
     .input:target,
     .input:active {
         outline: none;
-        box-shadow: 0px 0px var(--orange-1);
-        border-color: var(--orange-3);
+        box-shadow: 0px 0px var(--accentColor);
+        border-color: var(--textColor);
     }
 }

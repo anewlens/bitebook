@@ -29,10 +29,31 @@
     font-weight: 600;
     padding: .8rem 3.6rem;
     box-shadow: -.4rem .4rem var(--accentColor);
+
+
+    &:hover {
+        background-color: var(--lightColor);
+        box-shadow: 0rem 0rem var(--accentColor);
+    }
+}
+
+.Symbol {
+    background: var(--orange-1);
+    border: 1px solid var(--orange-4);
+    font-size: 2rem;
+    color: var(--textColor);
+    font-weight: 600;
+    padding: .8rem;
+    box-shadow: -.4rem .4rem var(--accentColor);
     transition: all .2s ease-out;
 
     &:hover {
         background-color: var(--lightColor);
         box-shadow: 0rem 0rem var(--accentColor);
+    }
+
+    & svg {
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }

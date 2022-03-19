@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head'
 import Image from 'next/image'
 import recipes from '../../data/recipes.js'
@@ -37,7 +37,7 @@ const Recipe = ({ recipe: { img, title, category, date, user, description, servi
     return (
         <div>
             <Head>
-                <title>{title} | BiteBook</title>
+                <title>{title} by {user} | BiteBook</title>
                 <meta name="description" content="A better way to collect recipes" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>

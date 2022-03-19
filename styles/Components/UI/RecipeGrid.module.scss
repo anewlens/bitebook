@@ -1,9 +1,88 @@
 .recipeGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30rem, auto));
-    grid-auto-rows: 400px;
-    column-gap: 4.5%;
-    row-gap: 7.6rem;
-    align-items: stretch;
-    padding: 7.6rem 0;
+    position: relative;
+
+    &_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        flex-wrap: wrap;
+        background-color: var(--orange-1);
+        z-index: 1;
+
+
+        &_title {
+            font-size: 3.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        &_buttons {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+    }
+
+    & .recipeGrid_filters {
+
+        z-index: -2;
+        width: 100%;
+        transition: all .2s ease-out;
+        margin-top: -4rem;
+        display: flex;
+        justify-content: space-around;
+
+        &.open {
+            margin-top: 4rem;
+            // animation: slideDown .2s ease-out;
+        }
+
+        &_filter {
+            display: grid;
+            grid-template-columns: 90% 10%;
+
+            &>select {
+
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid var(--orange-4);
+                color: var(--textColor);
+                font-weight: 600;
+                font-size: 2rem;
+                width: 200px;
+                padding: 1rem 1rem .4rem .4rem;
+
+            }
+
+            &::after {
+                content: "";
+                width: 0.8em;
+                height: 0.5em;
+                background-color: var(--orange-4);
+                clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+            }
+        }
+    }
+
+
+    &_grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30rem, auto));
+        grid-auto-rows: 400px;
+        column-gap: 4.5%;
+        row-gap: 7.6rem;
+        align-items: stretch;
+        padding: 7.6rem 0;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(calc((100% + 4rem)* -1));
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }

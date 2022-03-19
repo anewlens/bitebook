@@ -9,7 +9,10 @@ type InputProps = {
 
 const Input = ({ state, func, placeholder }: InputProps) => {
     return (
+
         <input type="text" className={styles.input} placeholder={placeholder} value={state} onChange={func} />
+
+
     );
 };
 

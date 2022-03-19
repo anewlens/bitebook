@@ -6,7 +6,9 @@ const books = [
             username: 'anewlens'
         },
         title: "Grandma's Recipes",
+        bio: 'May she rest in peace. These are the meals Dottie served every Sunday, come rain or shine, sickness or health. May she live on through these culinary creations.',
         color: "Red",
+        img: 'https://images.unsplash.com/photo-1575467678930-c7acd65d6470?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
         recipes: [
             {
                 id: 12,
@@ -158,8 +160,10 @@ const books = [
             id: 34,
             username: 'anewlens'
         },
+        bio: 'The greatest grills this side of Game Day! Fire it up, crack open a cold one and let the good times roll!',
         title: "Grilling Greats! (2022)",
         color: "Green",
+        img: 'https://images.unsplash.com/photo-1534177616072-ef7dc120449d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
         recipes: [
             {
                 id: 12,

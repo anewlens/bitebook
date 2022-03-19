@@ -31,6 +31,7 @@ export interface RecipeType {
     forks: number;
     ingredients: IngredientType[];
     steps: StepType[];
+    public?: boolean;
 };
 
 export interface BookType {
@@ -38,8 +39,10 @@ export interface BookType {
     user: {
         id: number;
         username: string;
-    }
+    };
+    bio?: string;
     title: string;
     color: string;
     recipes: RecipeType[];
+    img: string;
 }

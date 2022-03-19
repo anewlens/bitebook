@@ -19,7 +19,7 @@
 
   --red-1: hsl(0, 72%, 93%);
   --red-2: hsl(0, 57%, 83%);
-  --red-3: hsl(0, 34%, 37%);
+  --red-3: hsl(0, 60%, 37%);
   --red-4: hsl(0, 98%, 16%);
 
   --yellow-1: hsl(50, 100%, 93%);
@@ -70,6 +70,7 @@ a {
 }
 
 button {
+  display: flex;
   background: none;
   border: none;
   font-size: 2rem;
@@ -78,6 +79,20 @@ button {
 
   cursor: pointer;
 }
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+}
+
+
 
 @media screen and (min-width: 1500px) {
 

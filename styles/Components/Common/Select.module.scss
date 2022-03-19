@@ -1,0 +1,29 @@
+.selectWrapper {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+
+    &>select {
+
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--orange-4);
+        color: var(--textColor);
+        font-weight: 600;
+        font-size: 1.8rem;
+        width: 200px;
+        padding: 1rem 1rem .4rem .4rem;
+        grid-column: 1 / -1;
+        grid-row: 1/2;
+    }
+
+    &::after {
+        content: "";
+        width: 1.2rem;
+        height: .8rem;
+        background-color: var(--orange-4);
+        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        grid-column: 2 / 3;
+        grid-row: 1/2;
+    }
+}

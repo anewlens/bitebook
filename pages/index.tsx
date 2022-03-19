@@ -4,11 +4,12 @@ import Button from '../Components/Common/Button'
 import RecipeCard from '../Components/UI/RecipeCard'
 import RecipeGrid from '../Components/UI/RecipeGrid'
 import styles from '../styles/Pages/Home.module.scss'
+import colors from '../styles/Global/Colors.module.scss'
 import recipes from '../data/recipes'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.App}>
+    <div className={`${styles.App} ${colors.Orange}`}>
       <Head>
         <title>BiteBook</title>
         <meta name="description" content="A better way to collect recipes" />
@@ -49,14 +50,7 @@ const Home: NextPage = () => {
           <h2 className={styles.explore_heading}>What's on the Menu</h2>
           <p className={styles.explore_subheading}>See what the community's cooking</p>
 
-          <RecipeGrid>
-            {
-              recipes
-                .map(({ id, category, title, img, user, ratings }) => (
-                  <RecipeCard key={id} id={id} category={category} img={img} ratings={ratings} title={title} user={user} />)
-                )
-            }
-          </RecipeGrid>
+          <RecipeGrid recipes={recipes} />
 
         </section>
       </main>

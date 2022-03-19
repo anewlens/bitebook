@@ -22,7 +22,7 @@ const BookCard = ({ book }: { book: BookType }) => {
                     {
                         recipes.map((recipe, key) => (
                             <Link href={`/recipes/${encodeURIComponent(recipe.id)}`}>
-                                <a className={styles.bookCard_content_recipes_recipe} key={recipe.id} onMouseOver={e => { (setFeature(key)) }}>{recipe.title}</a>
+                                <a className={styles.bookCard_content_recipes_recipe} key={recipe.id} onMouseOver={(e) => { (setFeature(key)) }}>{recipe.title}</a>
                             </Link>
                         )
                         )
@@ -38,7 +38,10 @@ const BookCard = ({ book }: { book: BookType }) => {
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mO8WMtQz0AEYBxVSF+FAMJHEg1jjeLoAAAAAElFTkSuQmCC" />
             </div>
             <Link href={`/books/${encodeURIComponent(id)}`}>
-                <Button styling='Outline' color={color}>View all</Button>
+                <a>
+                    <Button styling='Outline' color={color}>View all</Button>
+
+                </a>
             </Link>
         </div>
     );
