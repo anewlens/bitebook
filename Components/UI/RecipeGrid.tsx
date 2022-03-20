@@ -19,13 +19,31 @@ const RecipeGrid = ({ title, recipes }: GridProps) => {
     const [search, setSearch] = useState('');
     const [filterControls, toggleFilters] = useState(false)
     const [type, setType] = useState('')
-    const [maxTime, setTime] = useState(3);
+    const [maxTime, setTime] = useState(24);
+
+    function convertTime(time: string): number {
+        let unit;
+        let amount = parseInt(time.match(/[0-9]+/g));
+
+        if (time.includes('hour')) {
+            unit = 'hour'
+        } else if (time.includes('minute')) {
+            unit = 'minute'
+        }
+
+        if (unit == 'minute') {
+            return (amount / 60)
+        } else {
+            return amount
+        }
+    }
 
     function filterFactory(list: RecipeType[], filter: string, category: string, rating?: number, time?: string): any {
         return list.filter(
             recipe => {
                 return recipe.title.toLowerCase().includes(filter.toLowerCase())
                     && category.length > 1 ? recipe.category == category : recipe.category
+                && maxTime >= convertTime(recipe.time.total)
 
             }
         ).map(recipe => (
