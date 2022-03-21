@@ -10,11 +10,11 @@ import Select from '../Common/Select';
 import Range from '../Common/Range';
 
 type GridProps = {
-    title?: string,
     recipes: RecipeType[]
+    title?: string,
 }
 
-const RecipeGrid = ({ title, recipes }: GridProps) => {
+const RecipeGrid = ({ recipes, title }: GridProps) => {
 
     const [search, setSearch] = useState('');
     const [filterControls, toggleFilters] = useState(false)
@@ -43,13 +43,10 @@ const RecipeGrid = ({ title, recipes }: GridProps) => {
     function filterFactory(list: RecipeType[], filter: string, category: string, rating: number, time: number): any {
         return list.filter(
             recipe => {
-                return recipe.title.toLowerCase().includes(filter.toLowerCase())
-                    && category.length > 1 ? recipe.category == category : recipe.category
-                    && time >= convertTime(recipe.time.total)
-                && rating <= recipe.ratings.rating
+                return recipe.title.toLowerCase().includes(filter.toLowerCase()) && time >= convertTime(recipe.time.total) && rating <= recipe.ratings.rating
 
             }
-        ).map(recipe => (
+        ).filter(recipe => category.length > 1 ? recipe.category == category : true).map(recipe => (
             <RecipeCard recipe={recipe} />)
         )
     }
