@@ -20,6 +20,8 @@ const RecipeGrid = ({ title, recipes }: GridProps) => {
     const [filterControls, toggleFilters] = useState(false)
     const [type, setType] = useState('')
     const [maxTime, setTime] = useState(24);
+    const [minRating, setRating] = useState(0)
+    const [inclIngr, setIngr] = useState('')
 
     function convertTime(time: string): number {
         let unit;
@@ -38,12 +40,13 @@ const RecipeGrid = ({ title, recipes }: GridProps) => {
         }
     }
 
-    function filterFactory(list: RecipeType[], filter: string, category: string, rating?: number, time?: string): any {
+    function filterFactory(list: RecipeType[], filter: string, category: string, rating: number, time: number): any {
         return list.filter(
             recipe => {
                 return recipe.title.toLowerCase().includes(filter.toLowerCase())
                     && category.length > 1 ? recipe.category == category : recipe.category
-                && maxTime >= convertTime(recipe.time.total)
+                    && time >= convertTime(recipe.time.total)
+                && rating <= recipe.ratings.rating
 
             }
         ).map(recipe => (
@@ -71,10 +74,26 @@ const RecipeGrid = ({ title, recipes }: GridProps) => {
                     <option value=''>Dish Type</option>
                 </Select>
                 <Range label='Max Time' state={maxTime} func={setTime} />
+                <Select arr={recipes.map(recipe => recipe.ratings.rating)}
+                    state={minRating}
+                    func={setRating}
+                    customChildren>
+                    <option value={0}>Min Rating</option>
+                    <option value={5}>☆☆☆☆☆</option>
+                    <option value={4}>☆☆☆☆</option>
+                    <option value={3}>☆☆☆</option>
+                    <option value={2}>☆☆</option>
+                    <option value={1}>☆</option>
+                </Select>
+                {/* <Select arr={recipes.map(recipe => recipe.ingredients.map(ingr => ingr.item)).flat()}
+                    state={inclIngr}
+                    func={setIngr}>
+                    <option value=''>Ingredients</option>
+                </Select> */}
             </div>
 
             <div className={styles.recipeGrid_grid}>
-                {filterFactory(recipes, search, type)}
+                {filterFactory(recipes, search, type, minRating, maxTime)}
                 {/* {recipes.filter(recipe => recipe.title.toLowerCase().includes(search.toLowerCase())).map(recipe => (<RecipeCard recipe={recipe} />))} */}
             </div>
         </div>
