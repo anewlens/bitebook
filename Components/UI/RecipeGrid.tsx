@@ -71,10 +71,9 @@ const RecipeGrid = ({ recipes, title }: GridProps) => {
                     <option value=''>Dish Type</option>
                 </Select>
                 <Range label='Max Time' state={maxTime} func={setTime} />
-                <Select arr={recipes.map(recipe => recipe.ratings.rating)}
+                <Select
                     state={minRating}
-                    func={setRating}
-                    customChildren>
+                    func={setRating}>
                     <option value={0}>Min Rating</option>
                     <option value={5}>☆☆☆☆☆</option>
                     <option value={4}>☆☆☆☆</option>

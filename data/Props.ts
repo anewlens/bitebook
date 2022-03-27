@@ -4,10 +4,10 @@ export interface StepType {
 }
 
 export interface IngredientType {
-    amount: number | null;
-    unit: string | null;
+    amount: number;
+    unit: string;
     item: string;
-    method: string | null;
+    method: string;
     section: string | null;
 }
 
